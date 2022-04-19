@@ -199,3 +199,32 @@ def z_function(s):
 # [0, 2, 1, 0, 2, 1, 0]
 # print(z_function("abcabc"))
 # [0, 0, 0, 3, 0, 0]
+
+
+"""
+Fenwick Tree
+
+Examples:
+"""
+def get_sum(bit, i):
+    s = 0
+    i += 1
+    while i > 0:
+        s += bit[i]
+        i -= i & -i
+    return s
+
+def update(bit, n, i, v):
+    i += 1
+    while i <= n:
+        bit[i] += v
+        i += i & -i
+
+def construct(arr, n):
+    bit = [0] * (n + 1)
+    for i in range(n):
+        update(bit, n, i, arr[i])
+    return bit
+
+# print(construct([1, 1, 4, 2, 5, 2], 6))
+# [0, 1, 2, 4, 8, 5, 7]
