@@ -228,3 +228,30 @@ def construct(arr, n):
 
 # print(construct([1, 1, 4, 2, 5, 2], 6))
 # [0, 1, 2, 4, 8, 5, 7]
+
+
+"""
+Union Find
+
+Examples:
+1202
+"""
+n = 10
+parent = [i for i in range(n)]
+rank = [0] * n
+def find(i):
+    if parent[i] != i:
+        parent[i] = find(parent[i])
+    return parent[i]
+def union(i, j):
+    ri, rj = find(i), find(j)
+    if ri != rj:
+        if rank[ri] > rank[rj]:
+            parent[rj] = ri
+        elif rank[ri] < rank[rj]:
+            parent[ri] = rj
+        else:
+            parent[rj] = ri
+            rank[ri] += 1
+        return True
+    return False
