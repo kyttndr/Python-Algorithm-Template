@@ -255,3 +255,37 @@ def union(i, j):
             rank[ri] += 1
         return True
     return False
+
+
+"""
+Binary Search
+
+Examples:
+2226
+"""
+candies = [5,8,6]
+k = 3
+def guess(max_candies):
+    if max_candies == 0:
+        return True
+    return sum(candy // max_candies for candy in candies) >= k
+
+# 往上取
+lo, hi = 0, max(candies) + 1
+while lo < hi:
+    mi = (lo + hi) // 2
+    if guess(mi):
+        lo = mi + 1
+    else:
+        hi = mi
+res = hi - 1
+
+# 往下取
+# lo, hi = 0, max(candies)
+# while lo < hi:
+#     mi = (lo + hi) // 2
+#     if guess(mi):
+#         hi = mi
+#     else:
+#         lo = mi + 1
+# res = lo
