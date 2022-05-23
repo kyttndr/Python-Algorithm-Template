@@ -234,7 +234,7 @@ def construct(arr, n):
 Union Find
 
 Examples:
-1202
+399, 1202
 """
 n = 10
 parent = [i for i in range(n)]
